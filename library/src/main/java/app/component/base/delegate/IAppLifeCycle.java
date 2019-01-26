@@ -1,4 +1,4 @@
-package app.component.base;
+package app.component.base.delegate;
 
 import android.content.Context;
 import android.content.res.Configuration;
