@@ -71,6 +71,11 @@ public class AppLifeCycleDelegateManager implements IAppLifeCycle {
             return this;
         }
 
+        public Builder addDelegates(List<IAppLifeCycle> lifeCycles) {
+            this.lifeCycles.addAll(lifeCycles);
+            return this;
+        }
+
         public AppLifeCycleDelegateManager build()
         {
             return new AppLifeCycleDelegateManager(this);

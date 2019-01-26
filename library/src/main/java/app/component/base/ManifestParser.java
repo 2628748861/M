@@ -6,22 +6,24 @@ import android.content.pm.PackageManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.component.base.delegate.IAppLifeCycle;
+
 
 public final class ManifestParser {
-    public static final String APP_VALUE = "com.config.app";
+    public static final String DEFAULT_APP_VALUE = "com.config.app";
     private  Context context;
     public ManifestParser(Context context) {
         this.context = context;
     }
 
-    public List<IAppLifeCycle> parseAppLifeCycles(String value) {
+    public List<IAppLifeCycle> parseAppLifeCycles() {
         List<IAppLifeCycle> modules = new ArrayList();
         try {
             ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(
                     context.getPackageName(), PackageManager.GET_META_DATA);
             if (appInfo.metaData != null) {
                 for (String key : appInfo.metaData.keySet()) {
-                    if (value.equals(appInfo.metaData.get(key))) {
+                    if (DEFAULT_APP_VALUE.equals(appInfo.metaData.get(key))) {
                         modules.add((IAppLifeCycle)parseModule(key));
                     }
                 }
