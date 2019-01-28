@@ -1,4 +1,4 @@
 # M
 
 proguard:
--keep class app.component.base.delegate.IAppLifeCycle{*;}
+-keep * implements app.component.base.delegate.IAppLifeCycle{*;}
